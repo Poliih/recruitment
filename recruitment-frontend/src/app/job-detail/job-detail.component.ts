@@ -1,24 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { JobService } from '../job.service';
-import { Job } from '../job.model';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'app-job-detail',
-  templateUrl: './job-detail.component.html'
+  templateUrl: './job-detail.component.html',
+  styleUrls: ['./job-detail.component.css'],
+  imports: [CommonModule, RouterModule]
 })
-export class JobDetailComponent implements OnInit {
-  job: Job | undefined;
-
-  constructor(
-    private route: ActivatedRoute,
-    private jobService: JobService
-  ) { }
-
-  ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.jobService.getJob(id).subscribe(job => {
-      this.job = job;
-    });
-  }
+export class JobDetailComponent {
+  @Input() job: any;  // Definir a propriedade job como um Input
 }

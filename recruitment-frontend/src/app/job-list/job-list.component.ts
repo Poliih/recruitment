@@ -1,19 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { JobService } from '../job.service';
-import { Job } from '../job.model';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';  // Importar RouterModule aqui
 
 @Component({
+  standalone: true,
   selector: 'app-job-list',
-  templateUrl: './job-list.component.html'
+  templateUrl: './job-list.component.html',
+  styleUrls: ['./job-list.component.css'],
+  imports: [CommonModule, RouterModule]  // Adicionar RouterModule à lista de imports
 })
-export class JobListComponent implements OnInit {
-  jobs: Job[] = [];
-
-  constructor(private jobService: JobService) { }
-
-  ngOnInit() {
-    this.jobService.getJobs().subscribe(jobs => {
-      this.jobs = jobs;
-    });
-  }
+export class JobListComponent {
+  jobs: any[] = [];  // Definir jobs como um array de qualquer tipo
 }
