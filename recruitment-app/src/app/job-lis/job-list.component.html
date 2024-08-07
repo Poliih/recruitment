@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>Vagas Disponíveis</h2>
+  <ul class="list-group">
+    <li *ngFor="let job of jobs" class="list-group-item">
+      <a [routerLink]="['/job', job.id]">{{ job.title }}</a>
+    </li>
+  </ul>
+</div>

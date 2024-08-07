@@ -1,0 +1,47 @@
+/* Estilos para o menu de navegação superior */
+.navbar {
+  width: 100%;
+  background: linear-gradient(180deg, #2C3E50 40%, #34495E 100%);
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar ul li {
+  position: relative;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  display: block;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: #1ABC9C;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Estilos para a área de conteúdo */
+main {
+  padding-top: 60px; /* Ajuste para não sobrepor o menu */
+  margin: 0 auto;
+  max-width: 1200px; /* Ajuste o max-width conforme necessário */
+}

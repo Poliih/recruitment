@@ -15,25 +15,28 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
-                .authorizeRequests(authorizeRequests ->
-                        authorizeRequests
-                                .requestMatchers("/api/**").authenticated()
-                                .anyRequest().permitAll()
+                .authorizeHttpRequests(authorizeHttpRequests ->
+                        authorizeHttpRequests
+                                .requestMatchers("/api/**").authenticated() // Requer autenticação para todas as rotas começando com /api/
+                                .anyRequest().permitAll() // Permite acesso a todas as outras rotas sem autenticação
                 )
                 .formLogin(formLogin ->
                         formLogin
-                                .loginPage("/login")
-                                .permitAll()
+                                .loginPage("/login") // Página de login personalizada
+                                .permitAll() // Permite acesso à página de login sem autenticação
                 )
                 .logout(logout ->
-                        logout.permitAll()
+                        logout
+                                .permitAll() // Permite acesso à página de logout sem autenticação
+                )
+                .csrf(csrf ->
+                        csrf.disable() // Desativa a proteção CSRF
                 );
         return http.build();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(); // Utiliza BCrypt para codificação de senhas
     }
 }

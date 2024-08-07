@@ -14,8 +14,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Aqui você deve buscar o usuário no banco de dados
-        // Exemplo com usuário em memória
         if ("admin".equals(username)) {
             return new User("admin", "{noop}password", Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN")));
         } else {
