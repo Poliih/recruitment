@@ -1,0 +1,22 @@
+/* Estilos personalizados para o HomeComponent */
+h1 {
+  color: #2c3e50;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a:hover {
+  background-color: #2980b9;
+}
