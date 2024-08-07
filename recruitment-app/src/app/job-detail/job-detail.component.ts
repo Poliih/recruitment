@@ -25,6 +25,6 @@ export class JobDetailComponent implements OnInit {
   }
 
   apply(): void {
-    // Lógica para candidatura
+
   }
 }

@@ -9,8 +9,8 @@ export class AuthService {
   private loggedIn = false; // Simulação para fins de exemplo
 
   login(username: string, password: string): Observable<boolean> {
-    // Lógica real de autenticação
-    this.loggedIn = true; // Simulação de login bem-sucedido
+
+    this.loggedIn = true;
     return of(true);
   }
 

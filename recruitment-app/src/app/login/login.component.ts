@@ -17,7 +17,7 @@ export class LoginComponent {
       if (success) {
         this.router.navigate(['/home']);
       } else {
-        // Lógica de erro de login
+
       }
     });
   }

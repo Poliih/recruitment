@@ -41,7 +41,7 @@
 
 /* Estilos para a área de conteúdo */
 main {
-  padding-top: 60px; /* Ajuste para não sobrepor o menu */
+  padding-top: 60px;
   margin: 0 auto;
-  max-width: 1200px; /* Ajuste o max-width conforme necessário */
+  max-width: 1200px;
 }
