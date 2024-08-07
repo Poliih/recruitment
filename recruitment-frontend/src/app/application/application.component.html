@@ -1,0 +1,11 @@
+<form (ngSubmit)="apply()">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" [(ngModel)]="applicantName" name="name" required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" [(ngModel)]="applicantEmail" name="email" required>
+  </div>
+  <button type="submit">Apply</button>
+</form>

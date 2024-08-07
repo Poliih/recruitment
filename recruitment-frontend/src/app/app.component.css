@@ -1,0 +1,14 @@
+/* Estilos básicos para a navegação */
+nav {
+  margin-bottom: 15px;
+}
+
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #3498db;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
