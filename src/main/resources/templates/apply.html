@@ -3,34 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply - Recruitment Application</title>
-    <link rel="stylesheet" href="/style.css">
+    <title>Job Listings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .job-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .job-item {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .job-item h3 {
+            margin: 0 0 10px 0;
+        }
+        .job-item p {
+            margin: 0;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            margin-right: 10px;
+        }
+        .form-container input, .form-container button {
+            margin-right: 10px;
+        }
+        .message, .error {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .message {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
 </head>
 <body>
 <header>
-    <h1>Apply for a Job</h1>
+    <h1>Job Listings</h1>
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/jobs">View Jobs</a></li>
         </ul>
     </nav>
 </header>
+
 <main>
-    <h2>Application Form</h2>
-    <form action="/submitApplication" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+    <!-- Job Listings -->
+    <div class="form-container">
+        <h2>All Jobs</h2>
+        <ul id="jobList" class="job-list"></ul>
+    </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+    <!-- Add Candidate Form -->
+    <div class="form-container">
+        <h3>Apply for Job</h3>
+        <form id="applyForm">
+            <label for="jobId">Job ID:</label>
+            <input type="number" id="jobId" name="jobId" placeholder="Job ID" required>
 
+            <label for="candidateName">Name:</label>
+            <input type="text" id="candidateName" name="candidateName" placeholder="Name" required>
 
-        <button type="submit">Submit Application</button>
-    </form>
+            <label for="candidateEmail">Email:</label>
+            <input type="email" id="candidateEmail" name="candidateEmail" placeholder="Email" required>
+
+            <button type="submit">Apply</button>
+        </form>
+    </div>
+
+    <!-- Messages -->
+    <div id="message" class="message" style="display:none;"></div>
+    <div id="error" class="error" style="display:none;"></div>
 </main>
+
 <footer>
-    <p>&copy; 2024 Recruitment Application</p>
+    <p>&copy; 2024 Your Company</p>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchJobs();
+
+        document.getElementById('applyForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            applyForJob();
+        });
+    });
+
+    function fetchJobs() {
+        fetch('http://localhost:8081/api/jobs')
+            .then(response => response.json())
+            .then(data => {
+                const jobList = document.getElementById('jobList');
+                jobList.innerHTML = ''; // Clear any existing jobs
+                data.forEach(job => {
+                    const jobItem = document.createElement('li');
+                    jobItem.className = 'job-item';
+                    jobItem.innerHTML = `
+                        <h3>${job.title}</h3>
+                        <p>${job.description}</p>
+                        <p>ID: ${job.id}</p>
+                        <button onclick="applyJob(${job.id})">Apply</button>
+                    `;
+                    jobList.appendChild(jobItem);
+                });
+            })
+            .catch(error => showError('Error fetching jobs:', error));
+    }
+
+    function applyJob(jobId) {
+        document.getElementById('jobId').value = jobId;
+        window.scrollTo(0, document.body.scrollHeight); // Scroll to the application form
+    }
+
+    function applyForJob() {
+        const jobId = document.getElementById('jobId').value;
+        const name = document.getElementById('candidateName').value;
+        const email = document.getElementById('candidateEmail').value;
+
+        fetch(`http://localhost:8081/api/jobs/${jobId}/apply`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ applicantName: name, applicantEmail: email })
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            })
+            .then(() => {
+                document.getElementById('jobId').value = '';
+                document.getElementById('candidateName').value = '';
+                document.getElementById('candidateEmail').value = '';
+                showMessage('Application submitted successfully!');
+            })
+            .catch(error => showError('Error submitting application:', error));
+    }
+
+    function showMessage(message) {
+        const messageDiv = document.getElementById('message');
+        messageDiv.textContent = message;
+        messageDiv.style.display = 'block';
+        setTimeout(() => messageDiv.style.display = 'none', 5000);
+    }
+
+    function showError(message, error) {
+        console.error(message, error);
+        const errorDiv = document.getElementById('error');
+        errorDiv.textContent = `${message} ${error.message}`;
+        errorDiv.style.display = 'block';
+        setTimeout(() => errorDiv.style.display = 'none', 5000);
+    }
+</script>
 </body>
 </html>

@@ -2,21 +2,19 @@ package com.example.recruitment.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.recruitment.model.Application;
 import com.example.recruitment.model.Job;
 import com.example.recruitment.repository.ApplicationRepository;
 import com.example.recruitment.repository.JobRepository;
 
-@Controller
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/jobs")
 public class ApplicationController {
 
     private final JobRepository jobRepository;
@@ -28,57 +26,41 @@ public class ApplicationController {
         this.applicationRepository = applicationRepository;
     }
 
-    // Show Job Details and Candidates
-    @RequestMapping(value = "/job/{id}", method = RequestMethod.GET)
-    public ModelAndView jobDetails(@PathVariable("id") long id) {
-        Job job = jobRepository.findById(id).orElse(null);
-        if (job == null) {
-            return new ModelAndView("redirect:/");
+    // Endpoint to apply for a job
+    @PostMapping("/{id}/apply")
+    public ResponseEntity<Application> applyForJob(@PathVariable("id") Long id,
+                                                   @Valid @RequestBody Application application) {
+        Optional<Job> jobOptional = jobRepository.findById(id);
+        if (jobOptional.isPresent()) {
+            Job job = jobOptional.get();
+            application.setJob(job); // Set the job object in the application
+            Application savedApplication = applicationRepository.save(application);
+            return ResponseEntity.ok(savedApplication);
+        } else {
+            return ResponseEntity.notFound().build();
         }
-
-        ModelAndView mv = new ModelAndView("job/jobDetails");
-        mv.addObject("job", job);
-        Iterable<Application> candidates = applicationRepository.findByJobId(id);
-        mv.addObject("candidates", candidates);
-        return mv;
     }
 
-    // Add Candidate to Job
-    @RequestMapping(value = "/job/{id}", method = RequestMethod.POST)
-    public String addCandidate(@PathVariable("id") long id, @Valid Application candidate,
-                               BindingResult result, RedirectAttributes attributes) {
-        if (result.hasErrors()) {
-            attributes.addFlashAttribute("message", "Please check the fields");
-            return "redirect:/job/" + id;
+    // Endpoint to delete an application
+    @DeleteMapping("/applications/{id}")
+    public ResponseEntity<Void> deleteApplication(@PathVariable Long id) {
+        Optional<Application> applicationOptional = applicationRepository.findById(id);
+        if (applicationOptional.isPresent()) {
+            applicationRepository.delete(applicationOptional.get());
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
         }
-
-        // Check for duplicate ID
-        if (candidate.getId() != null && applicationRepository.findById(candidate.getId()).isPresent()) {
-            attributes.addFlashAttribute("error_message", "Duplicate ID");
-            return "redirect:/job/" + id;
-        }
-
-        Job job = jobRepository.findById(id).orElse(null);
-        if (job == null) {
-            attributes.addFlashAttribute("error_message", "Job not found");
-            return "redirect:/job/" + id;
-        }
-
-        candidate.setJobId(job.getId());  // Se usar ID do trabalho
-        applicationRepository.save(candidate);
-        attributes.addFlashAttribute("message", "Candidate added successfully!");
-        return "redirect:/job/" + id;
     }
 
-    // Delete Candidate by ID
-    @RequestMapping("/deleteCandidate")
-    public String deleteCandidate(@RequestParam Long id) {
-        Application candidate = applicationRepository.findById(id).orElse(null);
-        if (candidate != null) {
-            Long jobId = candidate.getJobId();  // Se usar ID do trabalho
-            applicationRepository.delete(candidate);
-            return "redirect:/job/" + jobId;
+    // Endpoint to get applications for a specific job
+    @GetMapping("/{id}/applications")
+    public ResponseEntity<List<Application>> getApplicationsForJob(@PathVariable("id") Long id) {
+        List<Application> applications = applicationRepository.findByJobId(id);
+        if (!applications.isEmpty()) {
+            return ResponseEntity.ok(applications);
+        } else {
+            return ResponseEntity.notFound().build();
         }
-        return "redirect:/job";
     }
 }

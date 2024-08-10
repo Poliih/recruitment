@@ -18,6 +18,7 @@
             border-radius: 4px;
             margin-bottom: 10px;
             padding: 10px;
+            background-color: #f9f9f9;
         }
         .job-item h3 {
             margin: 0 0 10px 0;
@@ -25,11 +26,59 @@
         .job-item p {
             margin: 0;
         }
+        .job-item button {
+            margin-right: 5px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            margin-right: 10px;
+        }
+        .form-container input, .form-container button {
+            margin-right: 10px;
+        }
+        .application-list {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        .application-item {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        #applicationContainer {
+            display: none;
+        }
     </style>
 </head>
 <body>
 <h1>Job Listings</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+</nav>
+<div class="form-container">
+    <h2>Add Job</h2>
+    <label for="title">Title:</label>
+    <input type="text" id="title" placeholder="Title" />
+    <label for="description">Description:</label>
+    <input type="text" id="description" placeholder="Description" />
+    <button onclick="addJob()">Add Job</button>
+</div>
+
 <ul id="jobList" class="job-list"></ul>
+
+<!-- Application List Container -->
+<div id="applicationContainer">
+    <h3>Applications</h3>
+    <ul id="applicationList" class="application-list"></ul>
+    <button onclick="hideApplications()">Close</button>
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -48,11 +97,91 @@
                     jobItem.innerHTML = `
                             <h3>${job.title}</h3>
                             <p>${job.description}</p>
+                            <button onclick="editJob(${job.id})">Edit</button>
+                            <button onclick="deleteJob(${job.id})">Delete</button>
+                            <button onclick="viewApplications(${job.id})">View Applications</button>
                         `;
                     jobList.appendChild(jobItem);
                 });
             })
             .catch(error => console.error('Error fetching jobs:', error));
+    }
+
+    function addJob() {
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+
+        fetch('http://localhost:8081/api/jobs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ title, description })
+        })
+            .then(response => response.json())
+            .then(() => {
+                fetchJobs(); // Refresh the job list
+                document.getElementById('title').value = '';
+                document.getElementById('description').value = '';
+            })
+            .catch(error => console.error('Error adding job:', error));
+    }
+
+    function editJob(id) {
+        const newTitle = prompt('Enter new title:');
+        const newDescription = prompt('Enter new description:');
+
+        if (newTitle && newDescription) {
+            fetch(`http://localhost:8081/api/jobs/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title: newTitle, description: newDescription })
+            })
+                .then(response => response.json())
+                .then(() => {
+                    fetchJobs(); // Refresh the job list
+                })
+                .catch(error => console.error('Error updating job:', error));
+        }
+    }
+
+    function deleteJob(id) {
+        if (confirm('Are you sure you want to delete this job?')) {
+            fetch(`http://localhost:8081/api/jobs/${id}`, {
+                method: 'DELETE'
+            })
+                .then(() => {
+                    fetchJobs(); // Refresh the job list
+                })
+                .catch(error => console.error('Error deleting job:', error));
+        }
+    }
+
+    function viewApplications(jobId) {
+        fetch(`http://localhost:8081/api/jobs/${jobId}/applications`)
+            .then(response => response.json())
+            .then(data => {
+                const applicationList = document.getElementById('applicationList');
+                applicationList.innerHTML = ''; // Clear any existing applications
+                data.forEach(application => {
+                    const applicationItem = document.createElement('li');
+                    applicationItem.className = 'application-item';
+                    applicationItem.innerHTML = `
+                        <p><strong>Name:</strong> ${application.applicantName}</p>
+                        <p><strong>Email:</strong> ${application.applicantEmail}</p>
+                    `;
+                    applicationList.appendChild(applicationItem);
+                });
+
+                document.getElementById('applicationContainer').style.display = 'block';
+            })
+            .catch(error => console.error('Error fetching applications:', error));
+    }
+
+    function hideApplications() {
+        document.getElementById('applicationContainer').style.display = 'none';
     }
 </script>
 </body>

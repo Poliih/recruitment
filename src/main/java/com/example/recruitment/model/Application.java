@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Column;
 
 @Entity
@@ -19,8 +20,8 @@ public class Application {
     @Column(nullable = false)
     private String applicantName;
 
-    @Column(nullable = false)
-    private Long jobId;
+    @ManyToOne
+    private Job job;  // Relacionamento com Job
 
     // Getters and Setters
 
@@ -48,11 +49,11 @@ public class Application {
         this.applicantName = applicantName;
     }
 
-    public Long getJobId() {
-        return jobId;
+    public Job getJob() {
+        return job;
     }
 
-    public void setJobId(Long jobId) {
-        this.jobId = jobId;
+    public void setJob(Job job) {
+        this.job = job;
     }
 }

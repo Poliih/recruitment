@@ -1,9 +1,11 @@
+/* Reset basic styling */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+/* Header styling */
 header {
     background-color: #333;
     color: #fff;
@@ -14,6 +16,7 @@ header {
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -26,10 +29,12 @@ nav ul li a {
     text-decoration: none;
 }
 
+/* Main content styling */
 main {
     padding: 2rem;
 }
 
+/* Footer styling */
 footer {
     background-color: #333;
     color: #fff;
@@ -38,4 +43,44 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Job list styling */
+.job-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.job-item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.job-item h3 {
+    margin: 0 0 10px 0;
+}
+
+.job-item p {
+    margin: 0;
+}
+
+.job-item button {
+    margin-right: 5px;
+}
+
+/* Form container styling */
+.form-container {
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    margin-right: 10px;
+}
+
+.form-container input,
+.form-container button {
+    margin-right: 10px;
 }
