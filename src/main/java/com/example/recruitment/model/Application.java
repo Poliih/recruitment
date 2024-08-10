@@ -4,21 +4,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Column;
 
 @Entity
 public class Application {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Job job;
-
-    private String applicantName;
+    @Column(nullable = false)
     private String applicantEmail;
 
+    @Column(nullable = false)
+    private String applicantName;
+
+    @Column(nullable = false)
+    private Long jobId;
+
     // Getters and Setters
+
     public Long getId() {
         return id;
     }
@@ -27,12 +32,12 @@ public class Application {
         this.id = id;
     }
 
-    public Job getJob() {
-        return job;
+    public String getApplicantEmail() {
+        return applicantEmail;
     }
 
-    public void setJob(Job job) {
-        this.job = job;
+    public void setApplicantEmail(String applicantEmail) {
+        this.applicantEmail = applicantEmail;
     }
 
     public String getApplicantName() {
@@ -43,11 +48,11 @@ public class Application {
         this.applicantName = applicantName;
     }
 
-    public String getApplicantEmail() {
-        return applicantEmail;
+    public Long getJobId() {
+        return jobId;
     }
 
-    public void setApplicantEmail(String applicantEmail) {
-        this.applicantEmail = applicantEmail;
+    public void setJobId(Long jobId) {
+        this.jobId = jobId;
     }
 }

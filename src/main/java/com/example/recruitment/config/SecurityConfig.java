@@ -4,8 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -15,28 +17,38 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(authorizeHttpRequests ->
-                        authorizeHttpRequests
-                                .requestMatchers("/api/**").authenticated() // Requer autenticação para todas as rotas começando com /api/
-                                .anyRequest().permitAll() // Permite acesso a todas as outras rotas sem autenticação
+                .authorizeHttpRequests(authz -> authz
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/api/**").permitAll()
+                        .requestMatchers("/jobs").permitAll()  // Permitir acesso à página de jobs
+                        .requestMatchers("/apply").permitAll()  // Permitir acesso à página de aplicar
+                        .anyRequest().authenticated()
                 )
-                .formLogin(formLogin ->
-                        formLogin
-                                .loginPage("/login") // Página de login personalizada
-                                .permitAll() // Permite acesso à página de login sem autenticação
+                .formLogin(form -> form
+                        .permitAll()
                 )
-                .logout(logout ->
-                        logout
-                                .permitAll() // Permite acesso à página de logout sem autenticação
+                .logout(logout -> logout
+                        .permitAll()
                 )
-                .csrf(csrf ->
-                        csrf.disable() // Desativa a proteção CSRF
-                );
+                .csrf(csrf -> csrf.disable());  // Desativa a proteção CSRF para simplificação
+
         return http.build();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // Utiliza BCrypt para codificação de senhas
+    public UserDetailsService userDetailsService() {
+        UserDetails user1 = User.builder()
+                .username("user")
+                .password("{noop}user")  // {noop} indica que a senha não está criptografada
+                .roles("USER")
+                .build();
+
+        UserDetails user2 = User.builder()
+                .username("admin")
+                .password("{noop}admin")  // {noop} indica que a senha não está criptografada
+                .roles("ADMIN")
+                .build();
+
+        return new InMemoryUserDetailsManager(user1, user2);
     }
 }

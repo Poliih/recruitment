@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply - Recruitment Application</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+    <h1>Apply for a Job</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/jobs">View Jobs</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h2>Application Form</h2>
+    <form action="/submitApplication" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+
+        <button type="submit">Submit Application</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2024 Recruitment Application</p>
+</footer>
+</body>
+</html>

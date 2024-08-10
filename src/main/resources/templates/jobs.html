@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .job-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .job-item {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .job-item h3 {
+            margin: 0 0 10px 0;
+        }
+        .job-item p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<h1>Job Listings</h1>
+<ul id="jobList" class="job-list"></ul>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchJobs();
+    });
+
+    function fetchJobs() {
+        fetch('http://localhost:8081/api/jobs')
+            .then(response => response.json())
+            .then(data => {
+                const jobList = document.getElementById('jobList');
+                jobList.innerHTML = ''; // Clear any existing jobs
+                data.forEach(job => {
+                    const jobItem = document.createElement('li');
+                    jobItem.className = 'job-item';
+                    jobItem.innerHTML = `
+                            <h3>${job.title}</h3>
+                            <p>${job.description}</p>
+                        `;
+                    jobList.appendChild(jobItem);
+                });
+            })
+            .catch(error => console.error('Error fetching jobs:', error));
+    }
+</script>
+</body>
+</html>
