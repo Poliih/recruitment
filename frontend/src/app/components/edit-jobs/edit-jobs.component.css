@@ -1,0 +1,206 @@
+/* Importar fonte do Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap");
+
+/* Reset de margin */
+p {
+  margin: 0;
+}
+
+/* Estilo para o título */
+h1 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(19, 39, 69, 1);
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* Estilo para o conteúdo principal */
+main {
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1200px;
+  transition: margin-right 0.3s ease;
+}
+
+/* Estilos principais do job listing */
+.job-listing {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.job {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.job-content {
+  display: flex;
+  flex: 1;
+  margin-right: 20px;
+}
+
+.job-logo {
+  width: 77px;
+  height: 70px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.job-details {
+  flex: 1;
+}
+
+.job-ref {
+  color: rgba(136, 136, 136, 1);
+  font-size: 15px;
+  line-height: 20px;
+  font-family: Manrope, sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.job-title {
+  color: rgba(19, 39, 69, 1);
+  font-size: 40px;
+  line-height: 40px;
+  font-family: Manrope, sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.job-description {
+  flex: 1;
+  color: rgba(19, 39, 69, 1);
+  font-size: 18px;
+  line-height: 18px;
+  font-family: Manrope, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.9px;
+  margin-right: 65px;
+}
+
+/* Estilo para o contêiner do formulário */
+.form-container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  width: 400px; /* Ajuste conforme necessário */
+  margin-bottom: 20px; /* Espaço entre o formulário e outros elementos */
+}
+
+/* Estilo para os rótulos e entradas do formulário */
+.form-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  color: rgba(19, 39, 69, 1);
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Estilo para o botão dentro do formulário */
+.form-container .apply-button {
+  background-color: #32FFCE; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  border: none; /* Remove bordas padrão */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 10px 20px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho da fonte */
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  cursor: pointer; /* Cursor de ponteiro */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
+  display: flex; /* Flexbox para alinhar o conteúdo */
+  align-items: center; /* Alinha itens no centro verticalmente */
+  justify-content: center; /* Alinha itens no centro horizontalmente */
+  width: 150px; /* Largura fixa para o botão */
+  text-align: center; /* Centraliza o texto dentro do botão */
+}
+
+/* Efeito de hover para o botão do formulário */
+.form-container .apply-button:hover {
+  background-color: #28d1b4; /* Cor de fundo quando em hover */
+  transform: scale(1.05); /* Aumenta ligeiramente o botão */
+}
+
+/* Estilo para o botão de aplicação com foco */
+.form-container .apply-button:focus {
+  outline: none; /* Remove a borda padrão do foco */
+  box-shadow: 0 0 0 2px rgba(50, 255, 206, 0.5); /* Adiciona uma sombra ao redor do botão */
+}
+
+/* Estilo para o contêiner de botões */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Alinha os botões à direita */
+  gap: 5px; /* Espaçamento entre os botões */
+}
+
+/* Estilo para o botão de aplicação */
+.apply-button {
+  background-color: #32FFCE; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  border: none; /* Remove bordas padrão */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 5px 10px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho da fonte */
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  cursor: pointer; /* Cursor de ponteiro */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
+  display: flex; /* Flexbox para alinhar o conteúdo */
+  align-items: center; /* Alinha itens no centro verticalmente */
+  justify-content: center; /* Alinha itens no centro horizontalmente */
+  width: 120px; /* Largura fixa para todos os botões */
+  text-align: center; /* Centraliza o texto dentro do botão */
+}
+
+/* Efeito de hover para o botão */
+.apply-button:hover {
+  background-color: #28d1b4; /* Cor de fundo quando em hover */
+  transform: scale(1.05); /* Aumenta ligeiramente o botão */
+}
+
+/* Estilo da seta */
+.arrow {
+  font-size: 20px;
+  font-weight: 700;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Adiciona rotação à seta quando o formulário está visível */
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* Estilo para o botão de aplicação com foco */
+.apply-button:focus {
+  outline: none; /* Remove a borda padrão do foco */
+  box-shadow: 0 0 0 2px rgba(50, 255, 206, 0.5); /* Adiciona uma sombra ao redor do botão */
+}
