@@ -5,6 +5,9 @@ import {MenuComponent} from "@app/components/menu/menu.component";
 import {FooterComponent} from "@app/components/footer/footer.component";
 import {ApplicationComponent} from "@app/components/application/application.component";
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
+import {ApplyJobComponent} from "@app/components/apply-job/apply-job.component";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +17,11 @@ import {HttpClientModule} from "@angular/common/http";
     MenuComponent,
     HttpClientModule,
     FooterComponent,
+    FormsModule,
+    CommonModule,
+    ApplyJobComponent,
     ApplicationComponent],
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
