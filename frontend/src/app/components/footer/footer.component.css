@@ -1,0 +1,53 @@
+/* Importa a fonte Manrope */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap");
+
+/* Define o comportamento do rodapé */
+:host {
+  display: block;
+
+}
+
+/* Estilo geral para o rodapé */
+.footer {
+  width: 100%;
+  height: 60px; /* Altura ajustada para o rodapé */
+  padding: 20px 50px; /* Espaçamento ajustado */
+  box-sizing: border-box;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 9, 12, 1) 0%,
+    rgba(26, 11, 46, 1) 20%,
+    rgba(7, 57, 60, 1) 82%
+  );
+  display: flex;
+  justify-content: space-between; /* Distribui os itens ao longo do rodapé */
+  align-items: center; /* Alinha itens verticalmente no centro */
+  border: none; /* Remove borda, se houver */
+  position: fixed; /* Fixar o rodapé na parte inferior da página */
+  bottom: 0; /* Coloca o rodapé na parte inferior da página */
+  left: 0; /* Alinha o rodapé à esquerda */
+}
+
+/* Estilo para o nome da marca */
+.brand-name {
+  color: rgba(255, 255, 255, 1);
+  font-size: 24px; /* Ajuste o tamanho da fonte conforme necessário */
+  line-height: 24px;
+  font-family: Manrope, sans-serif;
+  font-weight: 800;
+  margin-left: 20px;
+}
+
+/* Estilo para os ícones no rodapé */
+.icons {
+  display: flex;
+  align-items: center;
+  margin-right: 25px; /* Margem à direita do nome */
+}
+
+/* Estilo para cada ícone */
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px; /* Espaçamento entre os ícones */
+}

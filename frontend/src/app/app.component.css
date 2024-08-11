@@ -1,0 +1,5 @@
+/* styles.css ou seu arquivo CSS global */
+body {
+  margin: 0; /* Remove qualquer margem ao redor do corpo da página */
+  padding: 0; /* Remove qualquer preenchimento ao redor do corpo da página, se necessário */
+}
