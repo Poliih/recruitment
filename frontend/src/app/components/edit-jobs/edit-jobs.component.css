@@ -18,6 +18,9 @@ h1 {
 
 /* Estilo para o conteúdo principal */
 main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o formulário horizontalmente */
   padding: 20px;
   box-sizing: border-box;
   margin: 0 auto;
@@ -95,7 +98,6 @@ main {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   box-sizing: border-box;
