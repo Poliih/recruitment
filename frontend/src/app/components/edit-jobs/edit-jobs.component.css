@@ -206,3 +206,67 @@ main {
   outline: none; /* Remove a borda padrão do foco */
   box-shadow: 0 0 0 2px rgba(50, 255, 206, 0.5); /* Adiciona uma sombra ao redor do botão */
 }
+/* Estilo para o contêiner de aplicações */
+#applicationContainer {
+  background-color: #fff; /* Cor de fundo */
+  border: 1px solid #ddd; /* Borda */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+  padding: 20px; /* Espaçamento interno */
+  width: 400px; /* Largura fixa */
+  margin-bottom: 20px; /* Espaço abaixo do contêiner */
+}
+
+/* Estilo para o título dentro do contêiner de aplicações */
+#applicationContainer h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(19, 39, 69, 1);
+  margin-bottom: 15px;
+  text-align: center; /* Centraliza o título */
+}
+
+/* Estilo para a lista de aplicações */
+#applicationContainer ul {
+  list-style: none; /* Remove os marcadores da lista */
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo para os itens da lista de aplicações */
+#applicationContainer li {
+  margin-bottom: 10px; /* Espaçamento entre os itens */
+  color: rgba(19, 39, 69, 1);
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+}
+
+/* Estilo para o botão de fechar dentro do contêiner de aplicações */
+#applicationContainer button {
+  background-color: #32FFCE; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  border: none; /* Remove bordas padrão */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 10px 20px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho da fonte */
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  cursor: pointer; /* Cursor de ponteiro */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
+  display: block; /* Ocupa toda a largura disponível */
+  width: 100%; /* Largura total do botão */
+  text-align: center; /* Centraliza o texto dentro do botão */
+}
+
+/* Efeito de hover para o botão de fechar */
+#applicationContainer button:hover {
+  background-color: #28d1b4; /* Cor de fundo quando em hover */
+  transform: scale(1.05); /* Aumenta ligeiramente o botão */
+}
+
+/* Estilo para o botão de aplicação com foco dentro do contêiner */
+#applicationContainer button:focus {
+  outline: none; /* Remove a borda padrão do foco */
+  box-shadow: 0 0 0 2px rgba(50, 255, 206, 0.5); /* Adiciona uma sombra ao redor do botão */
+}
