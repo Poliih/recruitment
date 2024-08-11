@@ -4,8 +4,8 @@
 /* Reset de margin */
 p {
   margin: 0;
-}
 
+}
 /* Estilo para o título */
 h1 {
   font-family: 'Manrope', sans-serif; /* Define a fonte para o título */
@@ -105,7 +105,7 @@ main {
   position: absolute;
   right: 0;
   top: 0;
-  width: 60px;
+  width:60px;
   height: 100%;
   background-color: #32FFCE;
   display: flex;
@@ -113,6 +113,7 @@ main {
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
+
 }
 
 .apply-link {
@@ -127,20 +128,20 @@ main {
 .arrow {
   font-size: 20px;
 }
-
-/* Estilos para mensagens */
-.message, .error {
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 20px;
+/* Estilo para o link de aplicação */
+.apply-link {
+  text-decoration: none; /* Remove o sublinhado padrão do link */
+  color: #007bff; /* Cor da seta */
+  font-size: 24px; /* Tamanho da seta */
+  display: inline-block; /* Garante que a seta seja tratada como um bloco em linha */
+  transition: color 0.3s ease; /* Transição suave para a cor */
 }
 
-.message {
-  background-color: #d4edda;
-  color: #155724;
+.apply-link:hover {
+  color: #0056b3; /* Cor da seta ao passar o mouse */
 }
 
-.error {
-  background-color: #f8d7da;
-  color: #721c24;
+.arrow {
+  font-size: 24px; /* Tamanho da seta */
+  display: inline-block; /* Garante que a seta seja tratada como um bloco em linha */
 }

@@ -4,7 +4,6 @@
 /* Define o comportamento do rodapé */
 :host {
   display: block;
-
 }
 
 /* Estilo geral para o rodapé */
@@ -23,9 +22,8 @@
   justify-content: space-between; /* Distribui os itens ao longo do rodapé */
   align-items: center; /* Alinha itens verticalmente no centro */
   border: none; /* Remove borda, se houver */
-  position: fixed; /* Fixar o rodapé na parte inferior da página */
-  bottom: 0; /* Coloca o rodapé na parte inferior da página */
-  left: 0; /* Alinha o rodapé à esquerda */
+  position: relative; /* Alinha o rodapé conforme o fluxo do documento */
+  margin-top: auto; /* Empurra o rodapé para o final do contêiner pai */
 }
 
 /* Estilo para o nome da marca */
@@ -50,4 +48,17 @@
   width: 30px;
   height: 30px;
   margin-left: 10px; /* Espaçamento entre os ícones */
+}
+
+/* Adiciona um espaçamento para empurrar o rodapé para o fundo */
+body {
+  margin: 0;
+  min-height: 100vh; /* Garante que o corpo da página ocupa pelo menos a altura da janela de visualização */
+  display: flex;
+  flex-direction: column;
+}
+
+/* O contêiner principal deve preencher o espaço disponível */
+main {
+  flex: 1; /* Faz o main preencher o espaço disponível */
 }
