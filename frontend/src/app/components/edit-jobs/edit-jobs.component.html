@@ -1,0 +1,37 @@
+<h1>Edit Job</h1>
+<div class="form-container">
+  <form (ngSubmit)="updateJob()" #editJobForm="ngForm">
+    <div>
+      <label for="title">Title:</label>
+      <input
+        type="text"
+        id="title"
+        [(ngModel)]="title"
+        name="title"
+        placeholder="Title"
+        required
+        #titleInput="ngModel"
+      />
+      <div *ngIf="titleInput.invalid && titleInput.touched" class="error">
+        Title is required.
+      </div>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <input
+        type="text"
+        id="description"
+        [(ngModel)]="description"
+        name="description"
+        placeholder="Description"
+        required
+        #descriptionInput="ngModel"
+      />
+      <div *ngIf="descriptionInput.invalid && descriptionInput.touched" class="error">
+        Description is required.
+      </div>
+    </div>
+    <button type="submit" [disabled]="editJobForm.invalid">Update Job</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+  </form>
+</div>

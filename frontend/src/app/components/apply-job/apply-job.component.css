@@ -1,0 +1,101 @@
+/* Importar fonte do Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap");
+
+/* Reset de margin e padding */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Container para centralizar o conteúdo */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f5f5f5; /* Cor de fundo leve */
+}
+
+/* Estilo para o título */
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(19, 39, 69, 1);
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Estilo para o conteúdo principal */
+main {
+  width: 100%;
+  max-width: 500px; /* Ajustado para um tamanho adequado para o formulário */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Estilo para o formulário de aplicação */
+.application-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo dos labels */
+.application-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: rgba(19, 39, 69, 1);
+}
+
+/* Estilo dos campos de entrada */
+.application-form input {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Estilo para o botão de aplicação */
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Alinha o botão à direita */
+}
+
+.apply-button {
+  background-color: #32FFCE; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  border: none; /* Remove bordas padrão */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 10px 20px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho da fonte */
+  font-weight: 700;
+  cursor: pointer; /* Cursor de ponteiro */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
+}
+
+/* Efeito de hover para o botão */
+.apply-button:hover {
+  background-color: #28d1b4; /* Cor de fundo quando em hover */
+  transform: scale(1.05); /* Aumenta ligeiramente o botão */
+}
+
+/* Estilo para mensagens de erro */
+.notification.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-family: 'Manrope', sans-serif;
+}

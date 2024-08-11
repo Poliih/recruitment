@@ -1,0 +1,40 @@
+
+<head>
+
+  <title>Apply for Job</title>
+</head>
+<body>
+<div class="container">
+  <h1>Apply for Job</h1>
+  <main>
+    <form (ngSubmit)="applyForJob()" class="application-form">
+      <div *ngIf="error" class="notification error">{{ error }}</div>
+
+      <label for="candidateName">Your Name:</label>
+      <input
+        id="candidateName"
+        [(ngModel)]="candidateName"
+        name="candidateName"
+        type="text"
+        placeholder="Enter your name"
+        required
+      >
+
+      <label for="candidateEmail">Your Email:</label>
+      <input
+        id="candidateEmail"
+        [(ngModel)]="candidateEmail"
+        name="candidateEmail"
+        type="email"
+        placeholder="Enter your email"
+        required
+      >
+
+      <div class="button-container">
+        <button type="submit" class="apply-button">Submit Application</button>
+      </div>
+    </form>
+  </main>
+</div>
+</body>
+

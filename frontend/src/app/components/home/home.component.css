@@ -1,0 +1,92 @@
+/* Importando a fonte Archivo Black do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+/* Reset de margin e padding */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Archivo Black', sans-serif; /* Fonte padrão do corpo */
+}
+
+/* Estilo para o título */
+.welcome-to-recruitment {
+  font-family: 'Archivo Black', sans-serif; /* Fonte para o título */
+  font-size: 32px;
+  font-weight: 800;
+  color: rgba(19, 39, 69, 1); /* Cor padrão para "Recruitment.com" */
+  text-align: center;
+  line-height: 1.2;
+  margin: 30px 0;
+  width: 100%; /* Garante que o título ocupe toda a largura disponível */
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+}
+
+.welcome-to-recruitment span {
+  display: block;
+  font-weight: 800;
+}
+
+/* Estilo específico para "Welcome to" */
+.welcome-to-recruitment .welcome {
+  color: #32FFCE; /* Cor verde desejada */
+}
+
+
+/* Estilo para o contêiner principal */
+.group-18 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  justify-content: center; /* Centraliza o conteúdo verticalmente */
+  height: calc(100vh - 60px); /* Ocupa toda a altura da tela menos o título */
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center; /* Centraliza o texto no contêiner */
+}
+
+/* Estilo para a seção de texto e imagem */
+.group-234 {
+  display: flex;
+  align-items: center; /* Alinha verticalmente o conteúdo */
+  justify-content: space-between; /* Espaça o texto e a imagem */
+  width: 100%; /* Garante que ocupe toda a largura do contêiner */
+  max-width: 1200px; /* Limita a largura máxima */
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+/* Estilo para o conteúdo de texto */
+.text-content {
+  flex: 1; /* O texto ocupa o espaço restante */
+  margin-right: 20px; /* Espaço entre o texto e a imagem */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Estilo para o parágrafo de missão */
+.mission {
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(19, 39, 69, 1);
+  margin: 0 0 10px; /* Margem inferior para separar do texto */
+}
+
+/* Estilo para o parágrafo de descrição */
+.at-recruitment-com-our-m {
+  font-size: 18px;
+  color: rgba(19, 39, 69, 1);
+  line-height: 1.6; /* Melhora a legibilidade */
+}
+
+/* Estilo para a imagem */
+.felicidade-no-trabalho-istock-9144696641 {
+  max-width: 40%; /* Limita a largura máxima da imagem */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+/* Estilo para o parágrafo de chamada para ação */
+.start-your-journey-towa {
+  text-align: center;
+  font-size: 20px;
+  color: rgba(19, 39, 69, 1);
+  margin-top: 20px;
+}
