@@ -1,70 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {NgIf, NgForOf} from '@angular/common';
-import { Router } from '@angular/router';
-import {FormsModule} from "@angular/forms";
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-apply-form',
+  templateUrl: './apply-form.component.html',
   standalone: true,
   imports: [
-    NgIf, FormsModule, NgForOf, FormsModule
+    CommonModule,
+    FormsModule
   ],
-  templateUrl: './apply-form.component.html',
   styleUrls: ['./apply-form.component.css']
 })
 export class ApplyFormComponent implements OnInit {
-  jobs: any[] = []; // Array to hold job data
-  jobId: number | null = null; // Variable to store the selected job ID
-  candidateName: string = ''; // Variable for candidate's name
-  candidateEmail: string = ''; // Variable for candidate's email
-  message: string | null = null; // Variable for success messages
-  error: string | null = null; // Variable for error messages
+  jobId: string | null = null;
+  candidateName: string = '';
+  candidateEmail: string = '';
+  message: string | null = null;
+  error: string | null = null;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.fetchJobs();
-  }
-
-  fetchJobs(): void {
-    this.http.get<any[]>('http://localhost:8081/api/jobs')
-      .subscribe(
-        (data) => {
-          this.jobs = data;
-        },
-        (error) => {
-          console.error('Error fetching jobs:', error);
-        }
-      );
-  }
-
-  applyJob(jobId: number): void {
-    this.jobId = jobId;
+    this.route.queryParams.subscribe(params => {
+      this.jobId = params['jobId'] || null;
+    });
   }
 
   applyForJob(): void {
-    if (this.jobId !== null && this.candidateName && this.candidateEmail) {
-      this.http.post(`http://localhost:8081/api/jobs/${this.jobId}/apply`, {
-        applicantName: this.candidateName,
-        applicantEmail: this.candidateEmail
-      })
-        .subscribe(
-          () => {
-            this.jobId = null;
-            this.candidateName = '';
-            this.candidateEmail = '';
-            this.message = 'Application submitted successfully!';
-            setTimeout(() => this.message = null, 5000);
-          },
-          (error) => {
-            this.error = 'Error submitting application: ' + error.message;
-            setTimeout(() => this.error = null, 5000);
-          }
-        );
-    } else {
-      this.error = 'Please fill in all fields and select a job.';
-      setTimeout(() => this.error = null, 5000);
-    }
+    // Lógica para enviar o formulário
   }
 }

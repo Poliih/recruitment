@@ -38,10 +38,13 @@ export class ApplicationComponent implements OnInit {
       );
   }
 
-  applyJob(jobId: string): void {
-    this.selectedJobId = jobId; // Define o jobId selecionado
-    window.scrollTo(0, document.body.scrollHeight); // Role até o formulário de aplicação
+
+  applyJob(event: MouseEvent, jobId: string): void {
+    event.preventDefault(); // Impede o comportamento padrão do link
+    this.selectedJobId = jobId; // Define o ID do trabalho selecionado
+    window.scrollTo(0, document.body.scrollHeight); // Rola até o formulário de aplicação
   }
+
 
   applyForJob(): void {
     const jobId = this.selectedJobId;

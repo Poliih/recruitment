@@ -1,22 +1,39 @@
 <body>
 <h1>Application Section</h1>
 <main>
-  <section class="job-listing">
-    <div class="job" *ngFor="let job of jobs">
-      <div class="job-content">
-        <div class="job-details">
-          <p class="job-ref">Job ID: {{ job.id }}</p>
-          <p class="job-title">{{ job.title }}</p>
-          <p class="job-salary">{{ job.salary }}</p>
-        </div>
-        <p class="job-description">
-          {{ job.description }}
-        </p>
+  <div class="job-listing">
+  <div class="job" *ngFor="let job of jobs">
+    <div class="job-content">
+      <div class="job-details">
+        <p class="job-ref">Job ID: {{ job.id }}</p>
+        <p class="job-title">{{ job.title }}</p>
+
       </div>
-      <div class="apply-section">
-        <a href="#" class="apply-link" (click)="applyJob(job.id)"> <!-- Aqui troca de job.ref para job.id -->
-          <span class="arrow">&rarr;</span>
-        </a>
-      </div>
+      <p class="job-description">{{ job.description }}</p>
     </div>
-  </section>
+    <div class="apply-section">
+      <a href="#" class="apply-link" (click)="applyJob($event, job.id)">
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Formulário de Aplicação -->
+<div *ngIf="selectedJobId" class="form-container">
+  <h3>Apply for Job ID: {{ selectedJobId }}</h3>
+  <form (ngSubmit)="applyForJob()">
+    <label for="candidateName">Name:</label>
+    <input type="text" id="candidateName" name="candidateName" placeholder="Name" [(ngModel)]="candidateName" required>
+
+    <label for="candidateEmail">Email:</label>
+    <input type="email" id="candidateEmail" name="candidateEmail" placeholder="Email" [(ngModel)]="candidateEmail" required>
+
+    <button type="submit">Apply</button>
+  </form>
+</div>
+
+<!-- Mensagens -->
+<div *ngIf="message" class="message">{{ message }}</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+</main>
