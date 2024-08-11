@@ -87,6 +87,7 @@ main {
   font-family: Manrope, sans-serif;
   font-weight: 400;
   letter-spacing: 0.9px;
+  margin-right: 65px;
 }
 
 /* Estilos para a seção de aplicação */
@@ -94,34 +95,16 @@ main {
   position: absolute;
   right: 0;
   top: 0;
-  width: 60px;
+  width: 100px;
   height: 100%;
-  background-color: #32FFCE;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
+  margin-right: 15px;
 }
 
-/* Estilo do fundo semi-transparente */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
-  display: none; /* Inicialmente oculto */
-  align-items: center;
-  justify-content: center;
-  z-index: 1000; /* Garante que o formulário apareça sobre todos os outros elementos */
-}
-
-/* Mostrar overlay quando a classe 'visible' é adicionada */
-.overlay.visible {
-  display: flex;
-}
 
 /* Estilo do formulário sobreposto */
 .form-container {

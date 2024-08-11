@@ -8,6 +8,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {ApplyJobComponent} from "@app/components/apply-job/apply-job.component";
+import {HomeComponent} from "@app/components/home/home.component";
+import {JobEditComponent} from "@app/components/edit-jobs/edit-jobs.component";
 
 @Component({
   selector: 'app-root',
@@ -20,11 +22,12 @@ import {ApplyJobComponent} from "@app/components/apply-job/apply-job.component";
     FormsModule,
     CommonModule,
     ApplyJobComponent,
-    ApplicationComponent],
+    ApplicationComponent, HomeComponent],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
   title = 'frontend';
 }
