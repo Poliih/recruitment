@@ -18,7 +18,7 @@ body, html {
   height: 90vh;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #f5f5f5; /* Cor de fundo leve */
+  background-color: #f5f5f5;
 }
 
 /* Estilo para o título */
@@ -33,7 +33,7 @@ h1 {
 /* Estilo para o conteúdo principal */
 main {
   width: 100%;
-  max-width: 500px; /* Ajustado para um tamanho adequado para o formulário */
+  max-width: 500px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -69,25 +69,25 @@ main {
 /* Estilo para o botão de aplicação */
 .button-container {
   display: flex;
-  justify-content: flex-end; /* Alinha o botão à direita */
+  justify-content: flex-end;
 }
 
 .apply-button {
-  background-color: #32FFCE; /* Cor de fundo */
-  color: #fff; /* Cor do texto */
-  border: none; /* Remove bordas padrão */
-  border-radius: 8px; /* Bordas arredondadas */
-  padding: 10px 20px; /* Espaçamento interno */
-  font-size: 16px; /* Tamanho da fonte */
+  background-color: #32FFCE;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
   font-weight: 700;
-  cursor: pointer; /* Cursor de ponteiro */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* Efeito de hover para o botão */
 .apply-button:hover {
-  background-color: #28d1b4; /* Cor de fundo quando em hover */
-  transform: scale(1.05); /* Aumenta ligeiramente o botão */
+  background-color: #28d1b4;
+  transform: scale(1.05);
 }
 
 /* Estilo para mensagens de erro */

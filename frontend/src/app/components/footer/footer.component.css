@@ -9,8 +9,8 @@
 /* Estilo geral para o rodapé */
 .footer {
   width: 100%;
-  height: 60px; /* Altura ajustada para o rodapé */
-  padding: 20px 50px; /* Espaçamento ajustado */
+  height: 60px;
+  padding: 20px 50px;
   box-sizing: border-box;
   background: linear-gradient(
     90deg,
@@ -19,17 +19,17 @@
     rgba(7, 57, 60, 1) 82%
   );
   display: flex;
-  justify-content: space-between; /* Distribui os itens ao longo do rodapé */
-  align-items: center; /* Alinha itens verticalmente no centro */
-  border: none; /* Remove borda, se houver */
-  position: relative; /* Alinha o rodapé conforme o fluxo do documento */
-  margin-top: auto; /* Empurra o rodapé para o final do contêiner pai */
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  position: relative;
+  margin-top: auto;
 }
 
 /* Estilo para o nome da marca */
 .brand-name {
   color: rgba(255, 255, 255, 1);
-  font-size: 24px; /* Ajuste o tamanho da fonte conforme necessário */
+  font-size: 24px;
   line-height: 24px;
   font-family: Manrope, sans-serif;
   font-weight: 800;
@@ -40,25 +40,25 @@
 .icons {
   display: flex;
   align-items: center;
-  margin-right: 25px; /* Margem à direita do nome */
+  margin-right: 25px;
 }
 
 /* Estilo para cada ícone */
 .icon {
   width: 30px;
   height: 30px;
-  margin-left: 10px; /* Espaçamento entre os ícones */
+  margin-left: 10px;
 }
 
 /* Adiciona um espaçamento para empurrar o rodapé para o fundo */
 body {
   margin: 0;
-  min-height: 100vh; /* Garante que o corpo da página ocupa pelo menos a altura da janela de visualização */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 /* O contêiner principal deve preencher o espaço disponível */
 main {
-  flex: 1; /* Faz o main preencher o espaço disponível */
+  flex: 1;
 }
