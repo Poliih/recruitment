@@ -117,4 +117,11 @@ Contribuições são bem-vindas! Por favor, abra um pull request ou relate probl
 
 ## Telas
 ![image](https://github.com/user-attachments/assets/964cac98-ba4c-419c-a124-00c8746d5a87)
+![image](https://github.com/user-attachments/assets/e16c0191-207f-4044-acb2-aeee215b534c)
+![image](https://github.com/user-attachments/assets/1b49fdb5-c480-4080-9289-5fb9d61b4ef2)
+![image](https://github.com/user-attachments/assets/c46f3d68-cbb6-4de8-bf08-a8e36f318d9c)
+![image](https://github.com/user-attachments/assets/4b898bee-770c-4b50-8fa2-36993b2cbeab)
+
+
+
 
