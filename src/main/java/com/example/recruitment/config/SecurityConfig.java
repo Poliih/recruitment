@@ -20,8 +20,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/api/**").permitAll()
-                        .requestMatchers("/jobs").permitAll()  // Permitir acesso à página de jobs
-                        .requestMatchers("/apply").permitAll()  // Permitir acesso à página de aplicar
+                        .requestMatchers("/jobs").permitAll()
+                        .requestMatchers("/apply").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .logout(logout -> logout
                         .permitAll()
                 )
-                .csrf(csrf -> csrf.disable());  // Desativa a proteção CSRF para simplificação
+                .csrf(csrf -> csrf.disable());
 
         return http.build();
     }
@@ -39,13 +39,13 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         UserDetails user1 = User.builder()
                 .username("user")
-                .password("{noop}user")  // {noop} indica que a senha não está criptografada
+                .password("{noop}user")
                 .roles("USER")
                 .build();
 
         UserDetails user2 = User.builder()
                 .username("admin")
-                .password("{noop}admin")  // {noop} indica que a senha não está criptografada
+                .password("{noop}admin")
                 .roles("ADMIN")
                 .build();
 

@@ -24,8 +24,8 @@ main {
   transition: margin-right 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza o conteúdo horizontalmente */
-  max-width: 1000px; /* Ajusta a largura máxima para evitar largura excessiva */
+  align-items: center;
+  max-width: 1000px;
 
 }
 
@@ -119,31 +119,31 @@ main {
   padding: 20px;
   width: 400px;
   box-sizing: border-box;
-  z-index: 1001; /* Garante que o formulário esteja acima do fundo semi-transparente */
+  z-index: 1001;
 }
 
 /* Estilo para o botão de aplicação */
 .apply-button {
-  background-color: #32FFCE; /* Cor de fundo */
-  color: #fff; /* Cor do texto */
-  border: none; /* Remove bordas padrão */
-  border-radius: 8px; /* Bordas arredondadas */
-  padding: 10px 20px; /* Espaçamento interno */
-  font-size: 16px; /* Tamanho da fonte */
+  background-color: #32FFCE;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
-  cursor: pointer; /* Cursor de ponteiro */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
-  display: flex; /* Flexbox para alinhar o conteúdo */
-  align-items: center; /* Alinha itens no centro verticalmente */
-  justify-content: center; /* Alinha itens no centro horizontalmente */
-  gap: 10px; /* Espaçamento entre o texto e a seta */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 /* Efeito de hover para o botão */
 .apply-button:hover {
-  background-color: #28d1b4; /* Cor de fundo quando em hover */
-  transform: scale(1.05); /* Aumenta ligeiramente o botão */
+  background-color: #28d1b4;
+  transform: scale(1.05);
 }
 
 /* Estilo da seta */
@@ -160,6 +160,6 @@ main {
 }
 /* Estilo para o botão de aplicação com foco */
 .apply-button:focus {
-  outline: none; /* Remove a borda padrão do foco */
-  box-shadow: 0 0 0 2px rgba(50, 255, 206, 0.5); /* Adiciona uma sombra ao redor do botão */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(50, 255, 206, 0.5);
 }

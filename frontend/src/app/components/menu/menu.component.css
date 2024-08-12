@@ -9,10 +9,10 @@
 }
 
 .menu {
-  list-style: none; /* Remove os marcadores padrão */
-  display: flex; /* Alinha os itens horizontalmente */
+  list-style: none;
+  display: flex;
   padding: 0;
-  justify-content: flex-end; /* Alinha os itens no centro */
+  justify-content: flex-end;
   padding-right: 60px;
 }
 
@@ -22,12 +22,12 @@
 
 
 .menu-item a {
-  text-decoration: none; /* Remove o sublinhado do link */
-  color: white; /* Cor do texto */
-  font-size: 18px; /* Tamanho da fonte */
-  font-family: Arial, sans-serif; /* Fonte padrão */
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
 }
 
 .menu-item a:hover {
-  text-decoration: underline; /* Sublinha o link ao passar o mouse */
+  text-decoration: underline;
 }

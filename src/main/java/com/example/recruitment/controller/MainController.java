@@ -8,17 +8,17 @@ public class MainController {
 
     @GetMapping("/")
     public String home() {
-        return "index";  // Nome do arquivo HTML na pasta templates
+        return "index";
     }
 
     @GetMapping("/jobs")
     public String viewJobs() {
-        // Adicione a lógica para buscar jobs
-        return "jobs";  // Nome do arquivo HTML na pasta templates
+
+        return "jobs";
     }
 
     @GetMapping("/apply")
     public String apply() {
-        return "apply";  // Nome do arquivo HTML na pasta templates
+        return "apply";
     }
 }
