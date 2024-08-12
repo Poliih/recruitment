@@ -1,6 +1,5 @@
 
 
-```markdown
 # Recruitment System
 
 Este projeto é um sistema de recrutamento que permite a criação, visualização, edição e exclusão de vagas de emprego, bem como a aplicação de candidatos a essas vagas. Ele consiste em um backend desenvolvido em Spring Boot e um frontend em Angular.
