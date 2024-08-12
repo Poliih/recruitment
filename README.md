@@ -91,6 +91,7 @@ Representa a aplicação de um candidato para uma vaga.
 - **Home** `/` - Página inicial.
 - **Vagas** `/jobs` - Exibe as vagas de emprego disponíveis.
 - **Aplicar** `/apply-job/{id}` - Página de aplicação para uma vaga de emprego.
+- **Editar Vagas** `/edit-jobs` - Página para criar e editar vagas de emprego.
 
 ## Testando a Aplicação
 
