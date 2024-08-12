@@ -115,5 +115,6 @@ Para testar o frontend, navegue até `http://localhost:4200` em seu navegador e 
 
 Contribuições são bem-vindas! Por favor, abra um pull request ou relate problemas através da seção de issues.
 
-
+## Telas
+![image](https://github.com/user-attachments/assets/964cac98-ba4c-419c-a124-00c8746d5a87)
 
