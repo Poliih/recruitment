@@ -9,13 +9,24 @@ body, html {
   font-family: 'Archivo Black', sans-serif; /* Fonte padrão do corpo */
 }
 
+main {
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  transition: margin-right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  max-width: 1000px; /* Ajusta a largura máxima para evitar largura excessiva */
+}
+
 /* Estilo para o título */
 .welcome-to-recruitment {
   font-family: 'Archivo Black', sans-serif; /* Fonte para o título */
-  font-size: 32px;
+  font-size: 50px;
   font-weight: 800;
   color: rgba(19, 39, 69, 1); /* Cor padrão para "Recruitment.com" */
-  text-align: center;
+  text-align: left;
   line-height: 1.2;
   margin: 30px 0;
   width: 100%; /* Garante que o título ocupe toda a largura disponível */
@@ -32,14 +43,14 @@ body, html {
   color: #32FFCE; /* Cor verde desejada */
 }
 
-
 /* Estilo para o contêiner principal */
 .group-18 {
+  margin-top: -40px;
   display: flex;
   flex-direction: column;
   align-items: center; /* Centraliza o conteúdo horizontalmente */
   justify-content: center; /* Centraliza o conteúdo verticalmente */
-  height: calc(100vh - 60px); /* Ocupa toda a altura da tela menos o título */
+  height: calc(100vh - 70px); /* Ocupa toda a altura da tela menos o título */
   padding: 20px;
   box-sizing: border-box;
   text-align: center; /* Centraliza o texto no contêiner */
@@ -53,13 +64,15 @@ body, html {
   width: 100%; /* Garante que ocupe toda a largura do contêiner */
   max-width: 1200px; /* Limita a largura máxima */
   margin: 0 auto; /* Centraliza horizontalmente */
+  position: relative; /* Necessário para o posicionamento absoluto do círculo */
 }
 
 /* Estilo para o conteúdo de texto */
 .text-content {
   flex: 1; /* O texto ocupa o espaço restante */
-  margin-right: 20px; /* Espaço entre o texto e a imagem */
+  margin-right: 10%; /* Espaço entre o texto e a imagem */
   text-align: left; /* Alinha o texto à esquerda */
+  text-align: justify;
 }
 
 /* Estilo para o parágrafo de missão */
@@ -81,12 +94,33 @@ body, html {
 .felicidade-no-trabalho-istock-9144696641 {
   max-width: 40%; /* Limita a largura máxima da imagem */
   height: auto; /* Mantém a proporção da imagem */
+  border-radius: 15px;
 }
 
 /* Estilo para o parágrafo de chamada para ação */
 .start-your-journey-towa {
   text-align: center;
   font-size: 20px;
+
   color: rgba(19, 39, 69, 1);
   margin-top: 20px;
+}
+
+/* Estilo para o círculo borrado */
+.blurred-circle {
+  width: 500px; /* Ajuste o tamanho conforme necessário */
+  height: 300px; /* Ajuste o tamanho conforme necessário */
+  border-radius: 50%; /* Faz o círculo */
+  background: radial-gradient(circle,
+  rgba(0, 0, 0, 0) 0%,
+  rgba(115, 10, 10, 0) 1%,
+  #36064c 50%,
+  #07393c 100%,
+  #024daa 100%);
+  filter: blur(90px); /* Aplica o desfoque */
+  position: absolute; /* Permite o posicionamento atrás da imagem */
+  bottom: 0; /* Posiciona na parte inferior do contêiner */
+  left: 80%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajusta a centralização horizontal */
+  z-index: -1; /* Coloca o círculo atrás do conteúdo */
 }

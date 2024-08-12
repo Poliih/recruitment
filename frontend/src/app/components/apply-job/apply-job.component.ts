@@ -18,7 +18,8 @@ export class ApplyJobComponent implements OnInit {
   jobId: number | null = null;
   candidateName: string = '';
   candidateEmail: string = '';
-  error: string | null = null;
+  message: string | null = null;
+  messageType: 'success' | 'error' | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,25 +30,25 @@ export class ApplyJobComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
-      this.jobId = id ? +id : null; // Captura o ID do job da URL e converte para número
-      if (this.jobId === null || isNaN(this.jobId)) {  // Verifica se o ID é válido
-        this.error = 'Invalid job ID.';
+      this.jobId = id ? +id : null;
+      if (this.jobId === null || isNaN(this.jobId)) {
+        this.setMessage('Invalid job ID.', 'error');
         return;
       }
-      console.log('Job ID:', this.jobId); // Verifica se o ID está correto
+      console.log('Job ID:', this.jobId);
     });
   }
 
   applyForJob(): void {
     console.log('Applying for job with ID:', this.jobId);
 
-    if (this.jobId === null) {  // Verifica se o ID do job foi capturado corretamente
-      this.error = 'Invalid job ID.';
+    if (this.jobId === null) {
+      this.setMessage('Invalid job ID.', 'error');
       return;
     }
 
-    if (!this.candidateName || !this.candidateEmail) {  // Verifica se os campos estão preenchidos
-      this.error = 'Please fill in all fields.';
+    if (!this.candidateName || !this.candidateEmail) {
+      this.setMessage('Please fill in all fields.', 'error');
       return;
     }
 
@@ -56,20 +57,27 @@ export class ApplyJobComponent implements OnInit {
       applicantEmail: this.candidateEmail
     };
 
-    console.log('Applicant data:', applicant);
-
     this.jobService.applyForJob(this.jobId, applicant).subscribe(
       response => {
         console.log('Application successful:', response);
-        this.error = null;  // Limpa a mensagem de erro se a aplicação for bem-sucedida
-        alert('Application submitted successfully!');  // Mensagem de sucesso
+        this.setMessage('Application submitted successfully!', 'success');
         this.router.navigate(['/jobs']);
       },
       error => {
-        console.error('Error:', error); // Exibe o erro completo
-        this.error = `Failed to apply for the job. Error: ${error.message || error.status}`;
+        console.error('Error:', error);
+        this.setMessage(`Failed to apply for the job. Error: ${error.message || error.status}`, 'error');
       }
     );
   }
 
+  private setMessage(message: string, type: 'success' | 'error'): void {
+    this.message = message;
+    this.messageType = type;
+
+    // Clear the message after 5 seconds
+    setTimeout(() => {
+      this.message = null;
+      this.messageType = null;
+    }, 5000);
+  }
 }

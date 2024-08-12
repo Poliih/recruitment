@@ -1,42 +1,47 @@
-<h1>Application Section</h1>
 <main>
   <div class="form-container">
     <h2>Add Job</h2>
-    <label for="title">Title:</label>
-    <input type="text" id="title" [(ngModel)]="newJobTitle" placeholder="Title" />
-    <label for="description">Description:</label>
-    <input type="text" id="description" [(ngModel)]="newJobDescription" placeholder="Description" />
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" [(ngModel)]="newJobTitle" placeholder="Title" />
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input type="text" id="description" [(ngModel)]="newJobDescription" placeholder="Description" />
+    </div>
     <button class="apply-button" (click)="addJob()">Add Job</button>
+
+    <!-- Message display -->
+    <!-- Message display -->
+    <div *ngIf="message" [ngClass]="['alert', messageType]">{{ message }}</div>
+
   </div>
 
   <div class="job-listing">
     <div class="job" *ngFor="let job of jobs">
-      <div class="job-content">
+      <div class="job-header">
         <div class="job-details">
           <p class="job-ref">Job ID: {{ job.id }}</p>
           <p class="job-title">{{ job.title }}</p>
         </div>
         <p class="job-description">{{ job.description }}</p>
       </div>
-      <div class="action-buttons">
-        <div class="button-container">
-          <button class="apply-button" (click)="editJob(job.id)">Edit</button>
-          <button class="apply-button" (click)="deleteJob(job.id)">Delete</button>
-          <button class="apply-button" (click)="viewApplications(job.id)">View Applications</button>
-        </div>
+      <div class="job-buttons">
+        <button class="apply-button" (click)="editJob(job.id)">Edit</button>
+        <button class="apply-button" (click)="deleteJob(job.id)">Delete</button>
+        <button class="apply-button" (click)="viewApplications(job.id)">View Applications</button>
+      </div>
+      <!-- Application List Container for each job -->
+      <div class="application-container" *ngIf="selectedJobId === job.id">
+        <h3>Applications</h3>
+        <ul>
+          <li *ngFor="let application of applicationsMap[job.id]">
+            <p><strong>Name:</strong> {{ application.applicantName }}</p>
+            <p><strong>Email:</strong> {{ application.applicantEmail }}</p>
+          </li>
+        </ul>
+        <button (click)="hideApplications()">Close</button>
       </div>
     </div>
-  </div>
-
-  <!-- Application List Container -->
-  <div id="applicationContainer" *ngIf="applications.length > 0">
-    <h3>Applications</h3>
-    <ul>
-      <li *ngFor="let application of applications">
-        <p><strong>Name:</strong> {{ application.applicantName }}</p>
-        <p><strong>Email:</strong> {{ application.applicantEmail }}</p>
-      </li>
-    </ul>
-    <button (click)="hideApplications()">Close</button>
   </div>
 </main>
